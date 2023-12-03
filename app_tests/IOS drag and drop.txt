@@ -1,0 +1,39 @@
+import SwiftUI
+
+struct ContentView: View {
+    // 1. State variable to track position
+    @State private var labelPosition: CGSize = .zero
+
+    var body: some View {
+        VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundStyle(.tint)
+
+            // 2. Make the label draggable
+            Text("Hello, world!")
+                .padding()
+                .background(Color.gray.opacity(0.2)) // Optional: for better visibility
+                .offset(labelPosition)
+                .gesture(
+                    DragGesture()
+                        .onChanged { gesture in
+                            // 3. Update the position as the gesture changes
+                            self.labelPosition = gesture.translation
+                        }
+                        .onEnded { _ in
+                            // Optional: Reset position after drag ends
+                            // self.labelPosition = .zero
+                        }
+                )
+        }
+        .padding()
+    }
+}
+
+// Preview
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
