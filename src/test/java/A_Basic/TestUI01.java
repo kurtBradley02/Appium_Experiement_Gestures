@@ -23,8 +23,10 @@ public class TestUI01 {
 
 	@Test
 	public void test() {
-
-		android = new AndroidCap();
+		
+		cmd = new CmdTrigger();
+		
+		android = new AndroidCap("");
 
 		driver = android.getDriver();
 
